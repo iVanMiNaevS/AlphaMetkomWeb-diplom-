@@ -1,6 +1,50 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "swiper/css/effect-fade";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animate-fade-in-out {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.swiper {
+    border-radius: 20px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+    background-color: rgba(30, 58, 138, 0.7);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(30, 64, 175, 0.9);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.5rem;
+}
+
+.swiper-pagination-bullet {
+    background: white;
+    opacity: 0.7;
+    width: 12px;
+    height: 12px;
+}
+
+.swiper-pagination-bullet-active {
+    background: #1e40af;
+    opacity: 1;
+}
 
 * {
     margin: 0;
@@ -28,4 +72,16 @@ img {
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
+}
+@media (max-width: 640px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 1rem !important;
+    }
 }

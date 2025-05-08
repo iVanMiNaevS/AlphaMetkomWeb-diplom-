@@ -8,13 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home', [
-            'title' => 'Главная страница',
-            'features' => [
-                'Быстрая загрузка',
-                'Адаптивный дизайн',
-                'Безопасность'
-            ]
-        ]);
+        return view('home', []);
     }
 }

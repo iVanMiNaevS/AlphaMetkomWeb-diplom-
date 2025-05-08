@@ -3,8 +3,11 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
@@ -22,4 +25,22 @@ Route::prefix('admin')->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
-Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+Route::get('/contacts', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact-request', [ContactRequestController::class, 'store'])->name('contact.request');
+
+
+Route::get('/news', [NewsController::class, 'index'])->name('news');
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/news/category/{category}', [NewsController::class, 'byCategory'])->name('news.category');
+
+
+Route::get('/services/fast-buildings', [ServiceController::class, 'fastBuildings'])
+    ->name('services.fast-buildings');
+Route::get('/services/custom-production', [ServiceController::class, 'customProduction'])
+    ->name('services.custom-production');
+Route::get('/services/design', [ServiceController::class, 'design'])
+    ->name('services.design');
+Route::get('/services/repair', [ServiceController::class, 'repair'])
+    ->name('services.repair');
