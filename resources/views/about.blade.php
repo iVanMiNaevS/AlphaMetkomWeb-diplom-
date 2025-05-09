@@ -25,32 +25,15 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Наши услуги</h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        @foreach($services as $service)
                         <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
                             <h3 class="text-xl font-semibold text-blue-800 mb-3">
-                                <a href="{{route('services.fast-buildings')}}" class="hover:text-blue-500">Быстровозводимые здания</a>
+                                <a href="{{route('services.show',$service->slug)}}" class="hover:text-blue-500">{{$service->title}}</a>
                             </h3>
 
-                            <p class="text-gray-600">Полный цикл от проектирования до монтажа зданий любой сложности.</p>
+                            <p class="text-gray-600">{{$service->description}}</p>
                         </div>
-
-                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                            <h3 class="text-xl font-semibold text-blue-800 mb-3">
-                                <a href="{{route('services.custom-production')}}" class="hover:text-blue-500">Производство по чертежу</a>
-                            </h3>
-                            <p class="text-gray-600">Изготовление металлоконструкций по индивидуальным чертежам заказчика.</p>
-                        </div>
-
-                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                            <h3 class="text-xl font-semibold text-blue-800 mb-3">
-                                <a href="{{route('services.design')}}" class="hover:text-blue-500">Проектирование</a>
-                            </h3>
-                            <p class="text-gray-600">Разработка проектной документации с учетом всех технических требований.</p>
-                        </div>
-
-                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                            <h3 class="text-xl font-semibold text-blue-800 mb-3"><a href="{{route('services.repair')}}" class=" hover:text-blue-500">Ремонт конструкций</a></h3>
-                            <p class="text-gray-600">Восстановление и усиление металлических конструкций любого типа.</p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 

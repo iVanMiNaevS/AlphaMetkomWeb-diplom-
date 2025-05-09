@@ -36,11 +36,7 @@ Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/news/category/{category}', [NewsController::class, 'byCategory'])->name('news.category');
 
 
-Route::get('/services/fast-buildings', [ServiceController::class, 'fastBuildings'])
-    ->name('services.fast-buildings');
-Route::get('/services/custom-production', [ServiceController::class, 'customProduction'])
-    ->name('services.custom-production');
-Route::get('/services/design', [ServiceController::class, 'design'])
-    ->name('services.design');
-Route::get('/services/repair', [ServiceController::class, 'repair'])
-    ->name('services.repair');
+
+Route::get('/services/{slug}', [ServiceController::class, 'show'])
+    ->name('services.show')
+    ->where('slug', 'fast-buildings|custom-production|design|repair');

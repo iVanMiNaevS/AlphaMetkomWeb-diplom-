@@ -74,12 +74,17 @@
                             <span>Услуги</span>
                             <img src="{{ asset('images/icon-row-white.png') }}" alt="Альфа Меткон" class="h-3 w-3">
                         </button>
-
+                        @php
+                        $menuService = new \App\Services\HeaderMenuService();
+                        $services = $menuService->getServices();
+                        @endphp
                         <div class="dropdown-menu w-56 bg-white rounded-md shadow-lg py-1 z-50">
-                            <a href="{{route('services.fast-buildings')}}" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Быстровозводимые здания</a>
-                            <a href="{{route('services.custom-production')}}" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Производство по чертежу</a>
-                            <a href="{{route('services.design')}}" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Проектирование</a>
-                            <a href="{{route('services.repair')}}" class="block px-4 py-2 text-gray-800 hover:bg-blue-50">Ремонт конструкций</a>
+                            @foreach($services as $service)
+                            <a href="{{ route('services.show',$service->slug) }}"
+                                class="block px-4 py-2 text-gray-800 hover:bg-blue-50">
+                                {{ $service->title }}
+                            </a>
+                            @endforeach
                         </div>
                     </div>
 
@@ -100,11 +105,15 @@
                             <span>Услуги</span>
                             <img src="{{ asset('images/icon-row-white.png') }}" alt="Альфа Меткон" class="h-3 w-3">
                         </button>
+
                         <div class="services-dropdown pl-4">
-                            <a href="{{route('services.fast-buildings')}}" class="block py-2 text-blue-200 hover:text-white">Быстровозводимые здания</a>
-                            <a href="{{route('services.custom-production')}}" class="block py-2 text-blue-200 hover:text-white">Производство по чертежу</a>
-                            <a href="{{route('services.design')}}" class="block py-2 text-blue-200 hover:text-white">Проектирование</a>
-                            <a href="{{route('services.repair')}}" class="block py-2 text-blue-200 hover:text-white">Ремонт конструкций</a>
+                            @foreach($services as $service)
+                            <a href="{{ route('services.show',$service->slug) }}"
+                                class="block py-2 text-blue-200 hover:text-white">
+                                {{ $service->title }}
+                            </a>
+                            @endforeach
+
                         </div>
                     </div>
                     <a href="/contacts" class="block py-3 text-blue-100 hover:text-white">Контакты</a>
@@ -116,6 +125,10 @@
     <main class="container mx-auto px-4 py-6">
         @yield('content')
     </main>
+    @php
+    $footerService = new \App\Services\FooterContactsService();
+    $contacts = $footerService->getContacts();
+    @endphp
     <footer class="bg-gradient-to-r from-blue-900 to-blue-800 text-white shadow-md mt-auto">
         <div class="container mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -135,39 +148,57 @@
                 <div>
                     <h3 class="text-xl font-bold mb-4">Контакты</h3>
                     <address class="not-italic">
+                        @if($contacts['address'])
                         <div class="mb-2">
                             <strong>Адрес:</strong><br>
-                            Россия, Рязань,<br>
-                            район Южный Промышленный узел, 13
+                            {{ $contacts['address']->title }}
                         </div>
+                        @endif
+
+                        @if($contacts['phones']->isNotEmpty())
                         <div class="mb-2">
                             <strong>Телефоны:</strong><br>
-                            +7 903 836-26-09<br>
-                            +7 920 631-11-14
+                            @foreach($contacts['phones'] as $phone)
+                            {{ $phone->title }}<br>
+                            @endforeach
                         </div>
+                        @endif
+
+                        @if($contacts['emails']->isNotEmpty())
                         <div class="mb-2">
                             <strong>E-mail:</strong><br>
-                            alfametkon@mail.ru<br>
-                            info@alfametkon.ru
+                            @foreach($contacts['emails'] as $email)
+                            {{ $email->title }}<br>
+                            @endforeach
                         </div>
+                        @endif
+
+                        @if($contacts['working_hours'])
                         <div>
                             <strong>Время работы:</strong><br>
-                            Пн - Пт: 10.00-20.00
+                            {{ $contacts['working_hours']->title }}
                         </div>
+                        @endif
                     </address>
                 </div>
 
+                <!-- Колонка реквизитов -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Реквизиты</h3>
                     <div class="space-y-2">
+                        @if($contacts['requisites']['inn'])
                         <div>
-                            <strong>ИНН:</strong> 6230109878
+                            <strong>ИНН:</strong> {{ $contacts['requisites']['inn']->title }}
                         </div>
+                        @endif
+                        @if($contacts['requisites']['ogrn'])
                         <div>
-                            <strong>ОГРН:</strong> 1186234010050
+                            <strong>ОГРН:</strong> {{ $contacts['requisites']['ogrn']->title }}
                         </div>
+                        @endif
                     </div>
                 </div>
+
 
                 <div>
                     <div>

@@ -23,9 +23,7 @@
                     <div class="text-center text-white px-4">
                         <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Каркасные здания</h2>
                         <p class="text-sm md:text-xl mb-3 md:mb-6">Быстровозводимые конструкции с гарантией качества</p>
-                        <a href="/services" class="text-sm md:text-base bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-lg transition duration-300 inline-block">
-                            Наши услуги
-                        </a>
+
                     </div>
                 </div>
             </div>
@@ -78,51 +76,23 @@
         <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Наша продукция и услуги</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Карточка 1 -->
+            @foreach($services as $service)
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
-                <div class="p-6 h-full flex flex-col">
-                    <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <img src="{{ asset('images/city-town-residents-svgrepo-com.svg') }}" alt="Каркасные здания" class="w-8 h-8 object-cover">
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Каркасные здания</h3>
-                    <p class="text-gray-600 flex-grow">Производство и монтаж быстровозводимых зданий любой сложности для промышленных и коммерческих нужд.</p>
-                </div>
-            </div>
+                <a href="{{ route('services.show', $service->slug) }}">
 
-            <!-- Карточка 2 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
-                <div class="p-6 h-full flex flex-col">
-                    <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <img src="{{ asset('images/metal-gate-svgrepo-com.svg') }}" alt="Проектирование" class="w-8 h-8 object-cover">
+                    <div class="p-6 h-full flex flex-col">
+                        <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">{{$service->title}}</h3>
+                        <p class="text-gray-600 flex-grow">{{$service->description}}</p>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Проектирование</h3>
-                    <p class="text-gray-600 flex-grow">Разработка проектной документации с учетом всех технических требований.</p>
-                </div>
+                </a>
             </div>
+            @endforeach
 
-            <!-- Карточка 3 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
-                <div class="p-6 h-full flex flex-col">
-                    <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <img src="{{ asset('images/wrench-svgrepo-com.svg') }}" alt="Ремонт конструкций" class="w-8 h-8 object-cover">
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Ремонт конструкций</h3>
-                    <p class="text-gray-600 flex-grow">Ремонт конструкций в сжатые сроки с гарантией качества.</p>
-                </div>
-            </div>
 
-            <!-- Карточка 4 -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
-                <div class="p-6 h-full flex flex-col">
-                    <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
-                        <img src="{{ asset('images/plan-sketch-svgrepo-com.svg') }}" alt="Производство по чертежу" class="w-8 h-8 object-cover">
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Производство по чертежу</h3>
-                    <p class="text-gray-600 flex-grow">Изготовление нестандартных металлоконструкций по индивидуальным чертежам заказчика.</p>
-                </div>
-            </div>
+
         </div>
-    </div>
 </section>
 <section class="py-12 bg-gray-50">
     <div class="container mx-auto px-4">

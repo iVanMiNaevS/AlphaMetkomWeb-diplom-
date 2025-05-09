@@ -6,16 +6,21 @@
 <section class="py-12 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Профессиональное проектирование металлоконструкций</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">{{$service->title}}</h1>
 
             <div class="prose prose-lg text-gray-600 max-w-none">
                 <p class="text-xl mb-6">
-                    Полный цикл проектных работ - от технического задания до рабочей документации с учетом всех нормативов и требований.
+                    {{$service->description}}
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <img src="{{ asset('images/design/default/scale_1200.jpg') }}" alt="Проектирование" class="rounded-lg shadow-md">
-                    <img src="{{ asset('images/design/default/shutterstock_8504203-scaled.jpg') }}" alt="3D модель" class="rounded-lg shadow-md">
+                    @foreach($service->defaultImages as $image)
+                    <img
+                        src="{{ asset('storage/' . $image->image_path) }}"
+                        alt="{{ $image->alt ?? 'Изображение услуги' }}"
+                        class="rounded-lg shadow-md"
+                        loading="lazy">
+                    @endforeach
                 </div>
 
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Наши компетенции</h2>

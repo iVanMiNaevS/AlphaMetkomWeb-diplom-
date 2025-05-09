@@ -6,16 +6,21 @@
 <section class="py-12 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Ремонт и усиление металлоконструкций</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">{{$service->title}}</h1>
 
             <div class="prose prose-lg text-gray-600 max-w-none">
                 <p class="text-xl mb-6">
-                    Восстановление несущей способности и продление срока службы металлических конструкций любой сложности.
+                    {{$service->description}}
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <img src="{{ asset('images/repair/default/diploma.webp') }}" alt="Каркас здания" class="rounded-lg shadow-md">
-                    <img src="{{ asset('images/repair/default/i.webp') }}" alt="Каркас здания" class="rounded-lg shadow-md">
+                    @foreach($service->defaultImages as $image)
+                    <img
+                        src="{{ asset('storage/' . $image->image_path) }}"
+                        alt="{{ $image->alt ?? 'Изображение услуги' }}"
+                        class="rounded-lg shadow-md"
+                        loading="lazy">
+                    @endforeach
                 </div>
 
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Наши услуги</h2>

@@ -6,16 +6,21 @@
 <section class="py-12 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">Быстровозводимые здания из металлоконструкций</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">{{$service->title}}</h1>
 
             <div class="prose prose-lg text-gray-600 max-w-none">
                 <p class="text-xl mb-6">
-                    Быстровозводимые здания из высокопрочной стали с надежным каркасом и креплениями. Легкая облицовка сэндвич-панелями и другими современными материалами.
+                    {{$service->description}}
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <img src="{{ asset('images/fast-buildings/default/1745017176_photo_2025-04-18_16-40-17.jpg') }}" alt="Каркас здания" class="rounded-lg shadow-md">
-                    <img src="{{ asset('images/fast-buildings/default/1745018253_photo_2025-04-18_16-39-44.jpg') }}" alt="Готовое здание" class="rounded-lg shadow-md">
+                    @foreach($service->defaultImages as $image)
+                    <img
+                        src="{{ asset('storage/' . $image->image_path) }}"
+                        alt="{{ $image->alt ?? 'Изображение услуги' }}"
+                        class="rounded-lg shadow-md"
+                        loading="lazy">
+                    @endforeach
                 </div>
 
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Преимущества технологии</h2>

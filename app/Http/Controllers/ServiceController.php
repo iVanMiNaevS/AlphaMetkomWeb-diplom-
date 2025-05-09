@@ -2,30 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function fastBuildings()
+
+    public function show($slug)
     {
-        return view('services.fast-buildings');
-    }
+        $service = Service::with('defaultImages')->where('slug', $slug)->firstOrFail();
 
-
-    public function customProduction()
-    {
-        return view('services.custom-production');
-    }
-
-
-    public function design()
-    {
-        return view('services.design');
-    }
-
-
-    public function repair()
-    {
-        return view('services.repair');
+        return view('services.' . $slug, compact('service'));
     }
 }

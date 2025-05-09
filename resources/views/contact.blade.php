@@ -7,38 +7,55 @@
 <section class="py-12 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">Контакты</h1>
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            @php
+            $footerService = new \App\Services\FooterContactsService();
+            $contacts = $footerService->getContacts();
+            @endphp
 
             <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-2 border-b border-gray-200">Контактные данные</h2>
 
                 <div class="space-y-4">
+                    @if($contacts['address'])
                     <div>
                         <h3 class="text-lg font-semibold text-blue-800 mb-2">Адрес:</h3>
-                        <p class="text-gray-600">Россия, Рязань, район Южный Промышленный узел, 13</p>
+                        <p class="text-gray-600">{{ $contacts['address']->title }}</p>
                     </div>
+                    @endif
 
+                    @if($contacts['phones']->isNotEmpty())
                     <div>
                         <h3 class="text-lg font-semibold text-blue-800 mb-2">Телефоны:</h3>
                         <p class="text-gray-600">
-                            <a href="tel:+79038362609" class="hover:text-blue-700">+7 903 836-26-09</a><br>
-                            <a href="tel:+79206311114" class="hover:text-blue-700">+7 920 631-11-14</a>
+                            @foreach($contacts['phones'] as $phone)
+                            <span class=" block">
+                                {{ $phone->title }}
+                            </span>
+                            @endforeach
                         </p>
                     </div>
+                    @endif
 
+                    @if($contacts['emails']->isNotEmpty())
                     <div>
                         <h3 class="text-lg font-semibold text-blue-800 mb-2">Email:</h3>
                         <p class="text-gray-600">
-                            <a href="mailto:alfametkon@mail.ru" class="hover:text-blue-700">alfametkon@mail.ru</a><br>
-                            <a href="mailto:info@alfametkon.ru" class="hover:text-blue-700">info@alfametkon.ru</a>
+                            @foreach($contacts['emails'] as $email)
+                            <span class=" block">
+                                {{ $email->title }}
+                            </span>
+                            @endforeach
                         </p>
                     </div>
+                    @endif
 
+                    @if($contacts['working_hours'])
                     <div>
                         <h3 class="text-lg font-semibold text-blue-800 mb-2">Режим работы:</h3>
-                        <p class="text-gray-600">Пн-Пт: 9:00 - 18:00<br>Сб-Вс: выходной</p>
+                        <p class="text-gray-600">{{ $contacts['working_hours']->title }}</p>
                     </div>
+                    @endif
                 </div>
             </div>
 
