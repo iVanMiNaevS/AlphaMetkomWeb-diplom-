@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\AboutController;
+use App\Http\Controllers\adminControllers\AdminContactRequestsController;
+use App\Http\Controllers\adminControllers\AdminContactsController;
+use App\Http\Controllers\adminControllers\AdminNewsCategoriesController;
+use App\Http\Controllers\adminControllers\AdminNewsController;
+use App\Http\Controllers\adminControllers\AdminServicesController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
@@ -20,6 +23,26 @@ Route::prefix('admin')->group(function () {
         })->name('admin.dashboard');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+        Route::resource('news', AdminNewsController::class)->names('admin.news')
+            ->except(['show']);
+
+        Route::resource('services', AdminServicesController::class)->names('admin.services')
+            ->only(['index', 'edit', 'update']);;
+
+        Route::resource('news-categories', AdminNewsCategoriesController::class)->names('admin.news-categories')
+            ->except(['show']);
+
+        Route::resource('contacts', AdminContactsController::class)->names('admin.contacts')
+            ->except(['show']);
+
+        Route::resource('contact-requests', AdminContactRequestsController::class)->names('admin.contact-requests')
+            ->only(['index', 'destroy']);
+        Route::post(
+            'contact-requests/{request}/mark-as-processed',
+            [AdminContactRequestsController::class, 'markAsProcessed']
+        )
+            ->name('admin.contact-requests.mark-as-processed');
     });
 });
 

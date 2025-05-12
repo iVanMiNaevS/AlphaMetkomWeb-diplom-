@@ -13,7 +13,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Проверяем, нет ли уже админа в базе
         $adminExists = DB::table('users')
             ->where('email', 'admin@example.com')
             ->exists();
@@ -21,7 +20,7 @@ return new class extends Migration
         if (!$adminExists) {
             DB::table('users')->insert([
                 'email' => 'admin@example.com',
-                'password' => Hash::make('admin'), // Пароль: admin
+                'password' => Hash::make('admin'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

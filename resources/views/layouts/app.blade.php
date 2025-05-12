@@ -69,6 +69,12 @@
                     <a href="/" class="nav-link">Главная</a>
                     <a href="/about" class="nav-link">О компании</a>
                     <a href="/news" class="nav-link">Новости</a>
+                    @auth
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                        Админ-панель
+                    </a>
+                    @endauth
+
                     <div class="dropdown-container">
                         <button class="nav-link flex items-center">
                             <span>Услуги</span>
@@ -100,6 +106,11 @@
                 <div class="container mx-auto px-4 py-2">
                     <a href="/" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">Главная</a>
                     <a href="/about" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">О компании</a>
+                    @auth
+                    <a href="{{ route('admin.dashboard') }}" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">
+                        Админ-панель
+                    </a>
+                    @endauth
                     <div class="border-b border-blue-700">
                         <button class="w-full flex justify-between items-center py-3 text-blue-100 hover:text-white services-btn">
                             <span>Услуги</span>

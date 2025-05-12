@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->unsignedBigInteger('category_id'); // Должен соответствовать типу id в news_categories
+            $table->unsignedBigInteger('category_id');
             $table->string('image_path');
             $table->text('content')->nullable();
             $table->timestamps();
