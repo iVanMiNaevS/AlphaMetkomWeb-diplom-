@@ -193,7 +193,6 @@
                     </address>
                 </div>
 
-                <!-- Колонка реквизитов -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Реквизиты</h3>
                     <div class="space-y-2">

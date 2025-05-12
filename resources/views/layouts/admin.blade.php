@@ -15,7 +15,6 @@
 
 <body class="bg-gray-100">
     <div class="flex h-screen">
-        <!-- Сайдбар -->
         <div class="w-64 bg-gradient-to-b from-blue-900 to-blue-800 text-white p-4">
             <h1 class="text-2xl font-bold mb-6">Альфа Меткон</h1>
             <nav>
@@ -42,7 +41,6 @@
             </nav>
         </div>
 
-        <!-- Основной контент -->
         <div class="flex-1 overflow-auto">
             <header class="bg-white shadow p-4">
                 <div class="flex justify-between items-center">

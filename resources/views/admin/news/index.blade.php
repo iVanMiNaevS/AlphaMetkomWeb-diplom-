@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <!-- Заголовок и кнопка добавления -->
     <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 class="text-2xl font-bold text-gray-800">Управление новостями</h2>
         <a href="{{ route('admin.news.create') }}"
@@ -13,14 +12,12 @@
         </a>
     </div>
 
-    <!-- Сообщения об успехе -->
     @if(session('success'))
     <div class="mb-6 p-4 bg-green-50 text-green-700 rounded-lg border border-green-200">
         {{ session('success') }}
     </div>
     @endif
 
-    <!-- Таблица новостей -->
     <div class="bg-white shadow rounded-lg overflow-hidden">
         <div class="overflow-x-auto">
             <table class="w-full divide-y divide-gray-200">
@@ -79,7 +76,6 @@
         </div>
     </div>
 
-    <!-- Пагинация -->
     <div class="mt-6">
         {{ $news->links() }}
     </div>

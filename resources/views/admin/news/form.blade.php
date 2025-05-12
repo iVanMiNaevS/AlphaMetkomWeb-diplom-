@@ -5,7 +5,6 @@
 @endif
 
 <div class="space-y-6">
-    <!-- Заголовок -->
     <div class="space-y-2">
         <label for="title" class="block text-sm font-medium text-gray-700">Заголовок*</label>
         <input type="text" name="title" id="title" value="{{ old('title', $news->title ?? '') }}"
@@ -15,7 +14,6 @@
         @error('title')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
     </div>
 
-    <!-- Краткое описание -->
     <div class="space-y-2">
         <label for="description" class="block text-sm font-medium text-gray-700">Краткое описание*</label>
         <textarea name="description" id="description" rows="3"
@@ -25,7 +23,6 @@
         @error('description')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
     </div>
 
-    <!-- Категория -->
     <div class="space-y-2">
         <label for="category_id" class="block text-sm font-medium text-gray-700">Категория*</label>
         <select name="category_id" id="category_id"
@@ -41,7 +38,6 @@
         @error('category_id')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
     </div>
 
-    <!-- Изображение -->
     <div class="space-y-2">
         <label for="image" class="block text-sm font-medium text-gray-700">
             {{ isset($news) && $news->id ? 'Новое изображение (оставьте пустым, чтобы не изменять)' : 'Изображение*' }}
@@ -66,7 +62,6 @@
         @endif
     </div>
 
-    <!-- Полный текст -->
     <div class="space-y-2">
         <label for="content" class="block text-sm font-medium text-gray-700">Полный текст новости</label>
         <textarea name="content" id="content" rows="6"
@@ -76,7 +71,6 @@
         @error('content')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
     </div>
 
-    <!-- Кнопка отправки -->
     <div class="pt-4">
         <button type="submit"
             class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-medium
