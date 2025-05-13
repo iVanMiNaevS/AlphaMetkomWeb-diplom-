@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Альфа Меткон | Металлоконструкции')</title>
+    <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .header {
@@ -60,7 +61,7 @@
             <div class="flex justify-between items-center py-4">
                 <a href="/" class="flex items-center space-x-2">
                     <div class="bg-white p-1 rounded">
-                        <img src="{{ asset('images/logo.png') }}" alt="Альфа Меткон" class="h-8 w-8">
+                        <img src="{{ asset('images/logo2.svg') }}" alt="Альфа Меткон" class="h-12 w-12">
                     </div>
                     <span class="text-xl font-bold">Альфа Меткон</span>
                 </a>
@@ -145,7 +146,9 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="{{ asset('images/logo.png') }}" alt="Альфа Меткон" class="h-10 mr-2">
+                        <div class="bg-white p-1  rounded mr-2">
+                            <img src="{{ asset('images/logo2.svg') }}" alt="Альфа Меткон" class="h-16">
+                        </div>
                         <span class="text-xl font-bold">Альфа Меткон</span>
                     </div>
                     <ul class="space-y-2">
@@ -221,7 +224,7 @@
                                 <img src="{{ asset('images/vk-svgrepo-com.svg') }}" alt="ВКонтакте" class="h-8 w-8">
                             </a>
                             <a href="#" class="hover:text-blue-200 transition" aria-label="Одноклассники">
-                                <img src="{{ asset('images/odnoklassniki-logo-svgrepo-com.svg') }}" alt="Одноклассники" class="h-8 w-8">
+                                <img src="{{ asset('images/odnoklassniki.png') }}" alt="Одноклассники" class="h-8 w-8">
                             </a>
                         </div>
                     </div>
