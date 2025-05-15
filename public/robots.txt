@@ -1,2 +1,35 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /password
+Disallow: /email
+Disallow: /verify-email
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /sanctum/
+Disallow: /_ignition/
+Disallow: /storage/
+Disallow: /vendor/
+
+# Разрешаем индексировать публичные страницы
+Allow: /$
+Allow: /about
+Allow: /contacts
+Allow: /news$
+Allow: /news/
+Allow: /news/*
+Allow: /services/
+Allow: /services/*
+
+# Запрещаем конкретные параметры для services
+Disallow: /services/fast-buildings
+Disallow: /services/custom-production
+Disallow: /services/design
+Disallow: /services/repair
+
+# Разрешаем только определенные форматы для новостей
+Allow: /news/category/
+Allow: /news/show/
+
+Sitemap: https://ваш-сайт.ру/sitemap.xml
