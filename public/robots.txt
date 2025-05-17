@@ -12,7 +12,6 @@ Disallow: /_ignition/
 Disallow: /storage/
 Disallow: /vendor/
 
-# Разрешаем индексировать публичные страницы
 Allow: /$
 Allow: /about
 Allow: /contacts
@@ -22,13 +21,11 @@ Allow: /news/*
 Allow: /services/
 Allow: /services/*
 
-# Запрещаем конкретные параметры для services
 Disallow: /services/fast-buildings
 Disallow: /services/custom-production
 Disallow: /services/design
 Disallow: /services/repair
 
-# Разрешаем только определенные форматы для новостей
 Allow: /news/category/
 Allow: /news/show/
 

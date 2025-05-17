@@ -107,6 +107,7 @@
                 <div class="container mx-auto px-4 py-2">
                     <a href="/" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">Главная</a>
                     <a href="/about" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">О компании</a>
+                    <a href="/news" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">Новости</a>
                     @auth
                     <a href="{{ route('admin.dashboard') }}" class="block py-3 text-blue-100 hover:text-white border-b border-blue-700">
                         Админ-панель
@@ -232,7 +233,7 @@
             </div>
 
             <div class="border-t border-blue-700 mt-8 pt-6 text-center">
-                <p>&copy; 2023 Альфа Меткон. Все права защищены.</p>
+                <p>&copy; 2025 Альфа Меткон. Все права защищены.</p>
             </div>
         </div>
     </footer>
