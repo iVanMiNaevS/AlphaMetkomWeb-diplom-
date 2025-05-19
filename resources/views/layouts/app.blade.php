@@ -147,7 +147,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <div class="bg-white p-1  rounded mr-2">
+                        <div class="bg-white p-1 rounded mr-2">
                             <img src="{{ asset('images/logo2.svg') }}" alt="Альфа Меткон" class="h-16">
                         </div>
                         <span class="text-xl font-bold">Альфа Меткон</span>
@@ -174,7 +174,9 @@
                         <div class="mb-2">
                             <strong>Телефоны:</strong><br>
                             @foreach($contacts['phones'] as $phone)
-                            {{ $phone->title }}<br>
+                            <a href="tel:{{ preg_replace('/[^0-9+]/', '', $phone->title) }}" class="hover:text-blue-200 transition">
+                                {{ $phone->title }}
+                            </a><br>
                             @endforeach
                         </div>
                         @endif
@@ -183,7 +185,9 @@
                         <div class="mb-2">
                             <strong>E-mail:</strong><br>
                             @foreach($contacts['emails'] as $email)
-                            {{ $email->title }}<br>
+                            <a href="mailto:{{ $email->title }}" class="hover:text-blue-200 transition">
+                                {{ $email->title }}
+                            </a><br>
                             @endforeach
                         </div>
                         @endif
@@ -212,7 +216,6 @@
                         @endif
                     </div>
                 </div>
-
 
                 <div>
                     <div>

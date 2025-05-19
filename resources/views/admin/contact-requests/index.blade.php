@@ -22,6 +22,7 @@
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Тип</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Имя</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Контакты</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Текст сообщения</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Статус</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Дата</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Действия</th>
@@ -32,7 +33,13 @@
                 <tr class="{{ $request->processed ? 'bg-gray-50' : 'bg-white' }} hover:bg-gray-100">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $request->id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        @if($request->type === 'callback')
+                        Обратный звонок
+                        @elseif($request->type === 'email')
+                        Письмо на почту
+                        @else
                         {{ $request->type }}
+                        @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {{ $request->name }}
@@ -49,6 +56,15 @@
                         @endif
                         @if($request->call_time)
                         <div>Время звонка: {{ $request->call_time }}</div>
+                        @endif
+                    </td>
+                    <td class="px-6 py-4 text-sm text-gray-500">
+                        @if($request->message)
+                        <div class="max-w-xs overflow-hidden overflow-ellipsis" title="{{ $request->message }}">
+                            {{ Str::limit($request->message, 50) }}
+                        </div>
+                        @else
+                        -
                         @endif
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">

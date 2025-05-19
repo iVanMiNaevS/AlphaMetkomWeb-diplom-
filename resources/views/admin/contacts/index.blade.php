@@ -33,7 +33,28 @@
                 <tr class="hover:bg-gray-50">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $contact->id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
+                        @switch($contact->type->name)
+                        @case('address')
+                        Адрес
+                        @break
+                        @case('phone')
+                        Телефон
+                        @break
+                        @case('email')
+                        Email
+                        @break
+                        @case('working_hours')
+                        Время работы
+                        @break
+                        @case('inn')
+                        ИНН
+                        @break
+                        @case('ogrn')
+                        ОГРН
+                        @break
+                        @default
                         {{ $contact->type->name }}
+                        @endswitch
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {{ $contact->title }}

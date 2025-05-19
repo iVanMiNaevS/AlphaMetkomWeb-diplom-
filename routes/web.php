@@ -19,7 +19,12 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/dashboard', function () {
-            return view('admin.dashboard');
+            return view('admin.dashboard', [
+                'contactRequestsCount' => \App\Models\ContactRequest::count(),
+                'newsCount' => \App\Models\News::count(),
+                'servicesCount' => \App\Models\Service::count(),
+                'recentRequests' => \App\Models\ContactRequest::latest()->take(5)->get()
+            ]);
         })->name('admin.dashboard');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
