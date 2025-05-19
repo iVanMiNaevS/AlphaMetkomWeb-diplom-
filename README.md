@@ -11,9 +11,7 @@
 
 ### 1. Установка зависимостей PHP
 
-```bash
-composer install
-2. Настройка окружения
+composer install 2. Настройка окружения
 
 Скопируйте файл окружения:
 cp .env.example .env
@@ -28,10 +26,10 @@ php artisan key:generate
 Настройте подключение в файле .env:
 
 ini
-DB_CONNECTION=mysql
+DB*CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=имя_базы
+DB_DATABASE=имя*базы
 DB_USERNAME=пользователь
 DB_PASSWORD=пароль
 
@@ -61,4 +59,3 @@ php artisan serve
 
 Приложение будет доступно по адресу:
 http://localhost:8000
-```
